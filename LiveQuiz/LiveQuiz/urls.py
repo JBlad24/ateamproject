@@ -18,5 +18,6 @@ from django.contrib import admin
 
 urlpatterns = [
     # changed
+    # yo man i changed this
     url(r'^admin/', admin.site.urls),
 ]
