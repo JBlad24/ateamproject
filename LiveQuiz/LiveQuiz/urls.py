@@ -20,4 +20,5 @@ urlpatterns = [
     url(r'^quiz/', include('quiz.urls')),
     url(r'^admin/', admin.site.urls),
     url(r'^join/', include('quiz.urls')),
+    url(r'^display/', include('quiz.urls')),
 ]
