@@ -9,3 +9,6 @@ from django.http import HttpResponse
 def index(request):
     return HttpResponse("Quiz index Page")
 
+def join(request):
+    return HttpResponse("Enter the code below to join the survey")
+
