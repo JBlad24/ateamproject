@@ -7,10 +7,16 @@ from django.http import HttpResponse
 
 # Create your views here.
 def index(request):
-    return HttpResponse("Quiz index Page")
+    return render(request, 'quiz/welcome.html')
 
-def join(request):
-    return HttpResponse("Enter a code to join a survey")
 
-def displayJoinCode(request):
-    return HttpResponse("Visit <join url> and enter the code below to join the survey")
+def student_join(request):
+    return render(request, 'quiz/studentJoin.html')
+
+
+def display_join_url(request):
+    return render(request, 'quiz/displayUrl.html')
+
+
+def create_quiz(request):
+    return render(request, 'quiz/createQuiz.html')
