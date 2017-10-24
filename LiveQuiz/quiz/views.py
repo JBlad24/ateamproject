@@ -7,8 +7,7 @@ from django.http import HttpResponse
 
 # Create your views here.
 def index(request):
-    return render(request, 'quiz/welcome.html')
-
+    return render(request, 'quiz/index.html')
 
 def student_join(request):
     return render(request, 'quiz/studentJoin.html')
