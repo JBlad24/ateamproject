@@ -12,6 +12,7 @@ from .models import Quiz, Question, AnswerChoice
 def index(request):
     return render(request, 'quiz/index.html')
 
+
 def student_join(request):
     return render(request, 'quiz/studentJoin.html')
 
