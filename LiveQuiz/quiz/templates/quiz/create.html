@@ -6,7 +6,7 @@
 </head>
 <body>
 <h1>Create a new Quiz</h1>
-<form action ="{% url 'create_quiz' %}" method="post">
+<form action ="{% url 'quiz:create_quiz' %}" method="post">
     {% csrf_token %}
     Quiz Name:
     <input type="text" name = quizname>
