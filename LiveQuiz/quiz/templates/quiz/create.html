@@ -1,34 +1,63 @@
+{% load static %}
+<link rel="stylesheet" type="text/css" href="{% static 'quiz/style.css' %}"/>
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
     <title>Create Quiz</title>
+    <script>
+        var choiceCount = 1;
+        var questionCount = 1;
+        var limit = 4;
+
+        function addInput(divName) {
+            if (choiceCount == limit) {
+                alert("Answer Choice limit reached");
+            }
+            else {
+                var newdiv = document.createElement('div');
+                newdiv.innerHTML = "Choice " + (choiceCount + 1) + " <input type='text' name='myInputs[]'>";
+                document.getElementById(divName).appendChild(newdiv);
+                choiceCount++;
+            }
+        }
+
+        function addQuestion(divName) {
+            if (choiceCount < 1) {
+                alert("Please enter a choice");
+            }
+            else {
+                choiceCount = 0;
+                var newdiv = document.createElement('div');
+                newdiv.innerHTML = "<br>Question " + (questionCount + 1) + "<input type='text' name='questions[]'>";
+                document.getElementById(divName).appendChild(newdiv);
+                questionCount++;
+            }
+
+        }
+    </script>
 </head>
 <body>
+
 <h1>Create a new Quiz</h1>
+
 <form action ="{% url 'quiz:create_quiz' %}" method="post">
     {% csrf_token %}
-    Quiz Name:
-    <input type="text" name = quizname>
+    <div>
+        Quiz Name:
+        <input type="text" name=quizname>
+        <br>
+        <br>
+    </div>
+    <div id="questionTextForm">
+        Question 1 <input type="text" name="questions[]">
+        <div id="answerChoiceForm">
+            Choice 1 <input type="text" name="answerChoices[]">
+        </div>
+        <input type="button" value="Add choice" onClick="addInput('answerChoiceForm');">
+        <input type="button" value="Add Question" onclick="addQuestion('answerChoiceForm');">
+    </div>
     <br>
-    <br>
-    Question:
-    <input type="text" name = question>
-    <br>
-    <br>
-    Answer choice:
-    <input type="text" name = answerchoice>
-    <br>
-    Answer choice:
-    <input type="text" name = answerchoice>
-    <br>
-    Answer choice:
-    <input type="text" name = answerchoice>
-    <br>
-    Answer choice:
-    <input type="text" name = answerchoice>
-    <br>
-    <input type="submit" value="Create" />
+    <input type="submit" value="Create Quiz" />
 </form>
 </body>
 </html>
