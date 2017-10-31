@@ -27,10 +27,11 @@ def create(request):
 
 
 def create_quiz(request):
+
     new_quiz = Quiz(quiz_name='test123')
     new_quiz.save()
     new_quiz.question_set.create(question_text='Is this working')
 
-    return HttpResponseRedirect(reverse('index'))
+    return HttpResponseRedirect(reverse('quiz:index'))
 
 
