@@ -8,6 +8,8 @@
 .idea/
 LiveQuiz/.idea/
 
+../.DS_Store
+
 LiveQuiz/.sqlite3
 LiveQuiz/db.sqlite3
 
