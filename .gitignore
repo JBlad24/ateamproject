@@ -8,7 +8,7 @@
 .idea/
 LiveQuiz/.idea/
 
-.sqlite3
+LiveQuiz/.sqlite3
 
 # Sensitive or high-churn files:
 .idea/**/dataSources/
