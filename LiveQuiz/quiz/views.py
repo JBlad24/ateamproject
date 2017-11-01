@@ -26,10 +26,22 @@ def create(request):
 
 
 def create_quiz(request):
+    quiz_name = request.POST['quizname']
+    questions = request.POST.getlist("questions[]")
 
-    new_quiz = Quiz(quiz_name='test123')
+    new_quiz = Quiz()
+    new_quiz.quiz_name = quiz_name
     new_quiz.save()
-    new_quiz.question_set.create(question_text='Is this working')
+
+    for idx, question in enumerate(questions):
+        new_question = Question(question_text=question)
+        new_question.quiz = new_quiz
+        new_question.save()
+        answer_choices = request.POST.getlist("answerChoices[]" + str(idx+1))
+        for choice in answer_choices:
+            new_choice = AnswerChoice(choice_text=choice, votes=0)
+            new_choice.question = new_question
+            new_choice.save()
 
     return HttpResponseRedirect(reverse('quiz:index'))
 
