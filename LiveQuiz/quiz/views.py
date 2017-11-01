@@ -14,6 +14,7 @@ def index(request):
 
 
 def student_join(request):
+
     return render(request, 'quiz/studentJoin.html')
 
 
