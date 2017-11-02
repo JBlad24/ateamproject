@@ -46,4 +46,5 @@ def create_quiz(request):
     return HttpResponseRedirect(reverse('quiz:index'))
 
 def student_question_view(request):
-    return render(request, r'quiz/studentQuestionView.html')
+    questions = Question.objects.all()
+    return render(request, r'quiz/studentQuestionView.html', {'questions', questions})
