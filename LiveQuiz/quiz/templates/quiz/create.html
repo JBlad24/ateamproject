@@ -1,40 +1,11 @@
 {% load static %}
+<script src="{% static "quiz/create.js" %}"></script>
+
 <link rel="stylesheet" type="text/css" href="{% static 'quiz/style.css' %}"/>
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <title>Create Quiz</title>
-    <script>
-        var choiceCount = 1;
-        var questionCount = 1;
-        var limit = 4;
-
-        function addInput(divName) {
-            if (choiceCount == limit) {
-                alert("Answer Choice limit reached");
-            }
-            else {
-                var newdiv = document.createElement('div');
-                newdiv.innerHTML = "Choice " + (choiceCount + 1) + " <input type='text' name='myInputs[]'>";
-                document.getElementById(divName).appendChild(newdiv);
-                choiceCount++;
-            }
-        }
-
-        function addQuestion(divName) {
-            if (choiceCount < 1) {
-                alert("Please enter a choice");
-            }
-            else {
-                choiceCount = 0;
-                var newdiv = document.createElement('div');
-                newdiv.innerHTML = "<br>Question " + (questionCount + 1) + "<input type='text' name='questions[]'>";
-                document.getElementById(divName).appendChild(newdiv);
-                questionCount++;
-            }
-
-        }
-    </script>
 </head>
 <body>
 
@@ -44,16 +15,16 @@
     {% csrf_token %}
     <div>
         Quiz Name:
-        <input type="text" name=quizname>
+        <input type="text" name="quizname">
         <br>
         <br>
     </div>
     <div id="questionTextForm">
-        Question 1 <input type="text" name="questions[]">
+        Question 1 <input type="text" id="1" name="questions[]">
         <div id="answerChoiceForm">
-            Choice 1 <input type="text" name="answerChoices[]">
+            Choice 1 <input type="text" id="1" name="answerChoices[]1">
         </div>
-        <input type="button" value="Add choice" onClick="addInput('answerChoiceForm');">
+        <input type="button" value="Add choice" onClick="addChoice('answerChoiceForm');">
         <input type="button" value="Add Question" onclick="addQuestion('answerChoiceForm');">
     </div>
     <br>
