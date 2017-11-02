@@ -48,3 +48,6 @@ def create_quiz(request):
 def student_question_view(request):
     questions = Question.objects.all()
     return render(request, r'quiz/studentQuestionView.html', {'questions', questions})
+
+def teacher_view(request):
+    return render(request, 'quiz/teacherView.html')
