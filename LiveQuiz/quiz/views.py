@@ -14,7 +14,6 @@ def index(request):
 
 
 def student_join(request):
-
     return render(request, 'quiz/studentJoin.html')
 
 
@@ -34,4 +33,5 @@ def create_quiz(request):
 
     return HttpResponseRedirect(reverse('quiz:index'))
 
-
+def student_question_view(request):
+    return render(request, r'quiz/studentQuestionView.html')
