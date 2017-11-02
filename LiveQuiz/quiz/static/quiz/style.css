@@ -8,3 +8,29 @@
     font-size: 12px;
 }
 
+html, body {
+    height: 100%;
+}
+
+html {
+    display: table;
+    margin: auto;
+}
+
+body {
+    display: table-cell;
+    vertical-align: middle;
+    background: #3AAFA9;
+    color: #EDF3FC;
+    font-family: Impact;
+}
+
+h1 {
+    color: #17252A;
+}
+
+a {
+    color: #373d47;
+}
+
+
