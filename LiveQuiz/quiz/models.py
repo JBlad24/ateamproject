@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 from __future__ import unicode_literals
 
-
+from django.contrib.auth.models import User
 from django.db import models
 
 
@@ -9,6 +9,7 @@ from django.db import models
 class Quiz(models.Model):
     quiz_name = models.CharField(max_length=200)
     # pub_date = models.DateTimeField('date published')
+    teacher = models.ForeignKey(User)
 
     def __str__(self):
         return self.quiz_name

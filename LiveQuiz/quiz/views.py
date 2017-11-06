@@ -33,6 +33,7 @@ def create_quiz(request):
 
     new_quiz = Quiz()
     new_quiz.quiz_name = quiz_name
+    new_quiz.teacher = request.user
     new_quiz.save()
 
     for idx, question in enumerate(questions):
