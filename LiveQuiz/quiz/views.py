@@ -3,7 +3,7 @@ from __future__ import unicode_literals
 
 from django.contrib.auth import authenticate, login
 from django.contrib.auth.forms import UserCreationForm
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from django.http import HttpResponse, HttpResponseRedirect
 from django.urls import reverse
 
@@ -71,3 +71,8 @@ def signup(request):
     else:
         form = UserCreationForm()
     return render(request, 'registration/signup.html', {'form': form})
+
+
+def teacher_quiz_view(request, quiz_id):
+    quiz = get_object_or_404(Quiz, pk=quiz_id)
+    return render(request, 'quiz/teacherQuizView.html', {'quiz': quiz})

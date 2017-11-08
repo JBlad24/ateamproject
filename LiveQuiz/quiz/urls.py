@@ -12,5 +12,5 @@ urlpatterns = [
     url(r'^question[0-9]+$', views.student_question_view, name='student_question_view'),
     url(r'^teacherView/$', views.teacher_view, name='teacher_view'),
     url(r'^signup/$', views.signup, name='signup'),
-
+    url(r'^(?P<quiz_id>[0-9]+)/detail/$', views.teacher_quiz_view, name='teacher_quiz_view'),
 ]
