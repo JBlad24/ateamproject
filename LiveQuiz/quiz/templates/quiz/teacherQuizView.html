@@ -1,0 +1,23 @@
+{% load static %}
+<link rel="stylesheet" type="text/css" href="{% static 'quiz/style.css' %}"/>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h1>{{ quiz.quiz_name }}</h1>
+
+<ol>
+    {% for question in quiz.question_set.all %}
+        <li>{{ question.question_text }}</li>
+        {% for answerchoice in question.answerchoice_set.all %}
+            <p> {{ answerchoice.choice_text }}</p>
+        {% endfor %}
+    {% endfor %}
+</ol>
+
+</body>
+</html>
