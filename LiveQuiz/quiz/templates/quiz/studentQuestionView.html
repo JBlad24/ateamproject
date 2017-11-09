@@ -10,8 +10,11 @@
 <body>
 <h1>Question goes here</h1>
 
+
 {% for question in questions %}
-    {{ question }}
+
+    {{ question.question_text }}
+
 {% endfor %}
 
 </body>
