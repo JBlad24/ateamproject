@@ -50,10 +50,9 @@ def create_quiz(request):
 
 
 def student_question_view(request, quiz_id):
-    #quiz = request.GET.get(quiz_id)
-    quiz = Quiz.objects.get(pk=quiz_id)
-    questions = quiz(Question.objects.all())
-    return render(request, r'quiz/studentQuestionView.html', {'questions', questions})
+    quiz = Quiz.objects.get(quiz_name="hello")
+    questions = quiz.questions.all()
+    return render(request, r'quiz/studentQuestionView.html', {'questions': questions})
 
 
 def teacher_view(request):
@@ -78,3 +77,6 @@ def signup(request):
 def teacher_quiz_view(request, quiz_id):
     quiz = get_object_or_404(Quiz, pk=quiz_id)
     return render(request, 'quiz/teacherQuizView.html', {'quiz': quiz})
+
+def teacher_question_view(request):
+    return render(request, 'quiz/teacherQuestionView.html')
