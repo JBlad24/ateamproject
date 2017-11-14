@@ -76,7 +76,11 @@ def signup(request):
 
 def teacher_quiz_view(request, quiz_id):
     quiz = get_object_or_404(Quiz, pk=quiz_id)
+    questions = quiz.questions.all()
+    print(len(questions))
+
     return render(request, 'quiz/teacherQuizView.html', {'quiz': quiz})
+
 
 def teacher_question_view(request):
     return render(request, 'quiz/teacherQuestionView.html')

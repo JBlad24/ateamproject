@@ -11,13 +11,15 @@
 <h1>{{ quiz.quiz_name }}</h1>
 
 <ol>
-    {% for question in quiz.question_set.all %}
-        <li>{{ question.question_text }}</li>
-        {% for answerchoice in question.answerchoice_set.all %}
-            <p> {{ answerchoice.choice_text }}</p>
+    {% for questions in quiz.questions.all %}
+        <li>{{ questions.question_text }}</li>
+        {% for answer in questions.answers.all %}
+            <p> {{ answer.choice_text }}</p>
         {% endfor %}
     {% endfor %}
 </ol>
+
+
 
 </body>
 </html>
