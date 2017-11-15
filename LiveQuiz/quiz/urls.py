@@ -14,4 +14,5 @@ urlpatterns = [
     url(r'^teacherView/$', views.teacher_view, name='teacher_view'),
     url(r'^signup/$', views.signup, name='signup'),
     url(r'^(?P<quiz_id>[0-9]+)/detail/$', views.teacher_quiz_view, name='teacher_quiz_view'),
+    url(r'^quizList/$', views.quiz_list_view, name="quiz_list_view"),
 ]
