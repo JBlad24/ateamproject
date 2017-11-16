@@ -11,7 +11,16 @@
 <h1>Question goes here</h1>
 
 {% for question in questions %}
-    {{ question }}
+
+    <h1> {{ question.question_text }} </h1>
+    <form>
+    {% for answer in question.answers.all %}
+        <input type="radio", name="answer"> {{ answer.choice_text }}
+        <br>
+    {% endfor %}
+    </form>
+    <br>
+
 {% endfor %}
 
 </body>
