@@ -86,6 +86,6 @@ def teacher_question_view(request):
     return render(request, 'quiz/teacherQuestionView.html')
 
 def quiz_list_view(request):
-    quizzes = Quiz.objects.all()
+    quizzes = Quiz.objects.filter(teacher=request.user)
 
     return render(request, 'quiz/quizListView.html', {'quizzes': quizzes})
