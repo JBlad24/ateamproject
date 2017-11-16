@@ -12,7 +12,7 @@ class Quiz(models.Model):
     teacher = models.ForeignKey(User)
 
     def __str__(self):
-        return self.quiz_name
+        return self.quiz_name + str(self.pk)
 
 
 class Question(models.Model):
@@ -20,7 +20,7 @@ class Question(models.Model):
     question_text = models.CharField(max_length=300)
 
     def __str__(self):
-        return self.question_text + self.pk
+        return self.question_text + str(self.pk)
 
 
 class AnswerChoice(models.Model):
@@ -29,6 +29,6 @@ class AnswerChoice(models.Model):
     votes = models.IntegerField(default=0)
 
     def __str__(self):
-        return self.choice_text + self.pk
+        return self.choice_text
 
 
