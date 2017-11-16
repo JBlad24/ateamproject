@@ -83,9 +83,9 @@ def teacher_quiz_view(request, quiz_id):
 
 
 def teacher_question_view(request):
-    teacher=request.user
-    quizzes=teacher.quizs.all()
-    return render(request, 'quiz/teacherQuestionView.html', {'quizzes': quizzes})
+    return render(request, 'quiz/teacherQuestionView.html')
 
 def quiz_list_view(request):
-    return render(request, 'quiz/quizListView.html')
+    quizzes = Quiz.objects.all()
+
+    return render(request, 'quiz/quizListView.html', {'quizzes': quizzes})

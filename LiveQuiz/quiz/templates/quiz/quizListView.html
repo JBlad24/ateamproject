@@ -11,7 +11,7 @@
 <h1>Current Quizzes</h1>
 
 <ol>
-    {% for quiz in teacher.quizzes.all %}
+    {% for quiz in quizzes %}
         <li>{{ quiz.quiz_name }}</li>
     {% endfor %}
 </ol>
