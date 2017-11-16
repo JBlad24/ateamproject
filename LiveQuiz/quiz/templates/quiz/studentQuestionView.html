@@ -9,21 +9,19 @@
 </head>
 <body>
 
-{% for question in questions %}
 
-    <h1> {{ question.question_text }} </h1>
+<h1> {{ question.question_text }} </h1>
 
-    <form>
+<form>
     {% for answer in question.answers.all %}
 
         <input type="radio", name="answer"> {{ answer.choice_text }}
         <br>
 
     {% endfor %}
-    </form>
-    <br>
+</form>
+<br>
 
-{% endfor %}
 
 </body>
 </html>

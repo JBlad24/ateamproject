@@ -49,10 +49,10 @@ def create_quiz(request):
     return HttpResponseRedirect(reverse('quiz:index'))
 
 
-def student_question_view(request, quiz_id):
-    quiz = Quiz.objects.get(quiz_name="hello")
-    questions = quiz.questions.all()
-    return render(request, r'quiz/studentQuestionView.html', {'questions': questions})
+def student_question_view(request, quiz_id, question_id):
+    quiz = Quiz.objects.get(pk=quiz_id)
+    question = quiz.questions.get(pk=question_id)
+    return render(request, r'quiz/studentQuestionView.html', {'question': question})
 
 
 def teacher_view(request):
