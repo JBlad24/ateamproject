@@ -8,20 +8,18 @@
     <title>Teacher View</title>
 </head>
 <body>
-<h1>Question goes here</h1>
+<h1> {{ question.question_text }} </h1>
 
-{% for question in questions %}
 
-    <h1> {{ question.question_text }} </h1>
-    <form>
     {% for answer in question.answers.all %}
-        <input type="radio", name="answer"> {{ answer.choice_text }}
+        <li>{{ answer.choice_text }}
         <br>
     {% endfor %}
-    </form>
     <br>
 
-{% endfor %}
+<button onclick="location.href ='/quiz/' + {{ quiz_id }} + '/' + {{ question.id }} + '/results'">Results</button>
+
+
 
 </body>
 </html>

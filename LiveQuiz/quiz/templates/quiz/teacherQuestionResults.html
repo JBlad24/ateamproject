@@ -13,7 +13,7 @@
         {   //only advance to next question if the id given is still in the specified quiz
             id += 1;
             if (id <= last_id) {
-                window.location.href = "/quiz/" + quiz_id + "/" + (id) + "/results"; //change to url of question display
+                window.location.href = "/quiz/teacher/question/" + quiz_id + "/" + id;
             }
             else {
                 window.location.href = "/quiz/teacherView"
