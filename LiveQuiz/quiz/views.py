@@ -20,8 +20,8 @@ def student_join(request):
     return render(request, 'quiz/studentJoin.html')
 
 
-def display_join_url(request):
-    return render(request, 'quiz/displayUrl.html')
+def display_join_url(request, quiz_id):
+    return render(request, 'quiz/displayUrl.html', {'quiz_id': quiz_id})
 
 
 def create(request):
@@ -47,7 +47,7 @@ def create_quiz(request):
             new_choice.question = new_question
             new_choice.save()
 
-    return HttpResponseRedirect(reverse('quiz:index'))
+    return HttpResponseRedirect(reverse('quiz:teacher_view'))
 
 
 def student_question_view(request, quiz_id, question_id):
