@@ -1,0 +1,38 @@
+{% load static %}
+<link rel="stylesheet" type="text/css" href="{% static 'quiz/style.css' %}"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Results</title>
+    <script>
+        var last_id = {{ last_id }}
+
+        function nextQuestion(quiz_id, id)
+        {   //only advance to next question if the id given is still in the specified quiz
+            id += 1;
+            if (id <= last_id) {
+                window.location.href = "/quiz/" + quiz_id + "/" + (id) + "/results"; //change to url of question display
+            }
+            else {
+                window.location.href = "/quiz"
+            }
+        }
+    </script>
+</head>
+<body>
+
+
+    <h1>{{ question.question_text }}</h1>
+    {% for answer in question.answers.all %}
+        <h2> {{ answer.choice_text }} </h2>
+        <p> Votes: {{ answer.votes }} </p>
+        <br>
+    {% endfor %}
+
+
+    <button onclick="nextQuestion({{ quiz_id }},{{ question.id }})">Next</button>
+
+</body>
+</html>

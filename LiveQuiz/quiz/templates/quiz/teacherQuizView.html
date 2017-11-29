@@ -10,6 +10,8 @@
 <body>
 <h1>{{ quiz.quiz_name }}</h1>
 
+
+
 <ol>
     {% for questions in quiz.questions.all %}
         <li>{{ questions.question_text }}</li>

@@ -78,7 +78,6 @@ def signup(request):
 def teacher_quiz_view(request, quiz_id):
     quiz = get_object_or_404(Quiz, pk=quiz_id)
     questions = quiz.questions.all()
-    print(len(questions))
 
     return render(request, 'quiz/teacherQuizView.html', {'quiz': quiz})
 
@@ -91,3 +90,13 @@ def quiz_list_view(request):
     quizzes = Quiz.objects.filter(teacher=request.user)
 
     return render(request, 'quiz/quizListView.html', {'quizzes': quizzes})
+
+
+def question_results(request, quiz_id, question_id):
+    quiz = get_object_or_404(Quiz, pk=quiz_id)
+    question = get_object_or_404(Question, pk=question_id)
+
+    # get the id of the last question in the quiz
+    last_id = quiz.questions.all().last().id
+
+    return render(request, 'quiz/teacherQuestionResults.html', {'question': question, 'quiz_id': quiz_id, 'last_id': last_id})
