@@ -25,5 +25,4 @@ function addQuestion(divName) {
         document.getElementById(divName).appendChild(newdiv);
         questionCount++;
     }
-
 }
