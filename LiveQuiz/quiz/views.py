@@ -16,8 +16,12 @@ def index(request):
 
 
 def student_join(request):
-    #code = request.POST['code']
-    return render(request, 'quiz/studentJoin.html')
+    quiz_id = request.POST.get("code")
+    print(quiz_id)
+    quiz = Quiz.objects.get(pk=quiz_id)
+    question_id = quiz.questions.first().id
+
+    return render(request, 'quiz/studentJoin.html', {'question_id': question_id})
 
 
 def display_join_url(request, quiz_id):

@@ -10,9 +10,18 @@
 <body>
 <h1>Enter a code to join a survey</h1>
 
-<form action="/quiz/question/3/3">
-    Enter a code: <input type="text" name="code">
-    <input type="submit" value="Join fool">
+<script>
+    var quiz_url;
+    var question_url = "{{ question_id }}";
+    function setUrl() {
+       quiz_url = document.getElementById("codeId").value;
+       var form = document.getElementById("submitForm").action="/quiz/student/" + quiz_url + "/" + question_url;
+    }
+</script>
+
+<form action="" id="submitForm">
+    Enter a code: <input type="text" name="code" id="codeId">
+    <input type="submit" value="Join fool" onclick="setUrl()">
 </form>
 
 </body>
