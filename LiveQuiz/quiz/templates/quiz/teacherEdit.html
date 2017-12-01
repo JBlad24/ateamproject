@@ -9,10 +9,8 @@
 </head>
 <body>
 
-<h1> Edit: {{ question.question_text }} </h1>
 
-    Question: <input type="text" value="{{ question.question_text }}">
-
+    <h1>Question: <input type="text" value="{{ question.question_text }}"></h1>
     {% for answer in question.answers.all %}
         <li><input type="text" value="{{ answer.choice_text }}">
         <br>
