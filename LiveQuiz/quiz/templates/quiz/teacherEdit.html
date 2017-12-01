@@ -5,21 +5,22 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Teacher View</title>
+    <title>Teacher Edit</title>
 </head>
 <body>
-<h1> {{ question.question_text }} </h1>
 
+<h1> Edit: {{ question.question_text }} </h1>
+
+    Question: <input type="text" value="{{ question.question_text }}">
 
     {% for answer in question.answers.all %}
-        <li>{{ answer.choice_text }}
+        <li><input type="text" value="{{ answer.choice_text }}">
         <br>
     {% endfor %}
     <br>
 
-<button onclick="location.href ='/quiz/teacherEdit/' + {{ quiz_id }} + '/' + {{ question.id }}">Edit</button>
-<button onclick="location.href ='/quiz/' + {{ quiz_id }} + '/' + {{ question.id }} + '/results'">Results</button>
 
+<button onclick="location.href ='/quiz/teacher/' + {{ quiz_id }} + '/' + {{ question.id }}">Finished</button>
 
 </body>
 </html>

@@ -91,6 +91,11 @@ def teacher_question_view(request, quiz_id, question_id):
     question = quiz.questions.get(pk=question_id)
     return render(request, 'quiz/teacherQuestionView.html', {'question': question, 'quiz_id': quiz_id})
 
+def teacherEdit_question_view(request, quiz_id, question_id):
+    quiz = get_object_or_404(Quiz, pk=quiz_id)
+    question = quiz.questions.get(pk=question_id)
+    return render(request, 'quiz/teacherEdit.html', {'question': question, 'quiz_id': quiz_id})
+
 
 def quiz_list_view(request):
     quizzes = Quiz.objects.filter(teacher=request.user)
