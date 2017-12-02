@@ -121,3 +121,8 @@ def teacher_question_help(request, quiz_id):
 def quiz_results(request, quiz_id):
     quiz = get_object_or_404(Quiz, pk=quiz_id)
     return render(request, 'quiz/quizResults.html', {'quiz': quiz})
+
+
+def delete(request, quiz_id):
+    Quiz.objects.filter(id=quiz_id).delete()
+    return HttpResponseRedirect(reverse('quiz:quiz_list_view'))

@@ -17,6 +17,7 @@
 <h1>{{ quiz.quiz_name }}</h1>
 
 <button onclick="startQuiz({{ quiz.id }})">Start Quiz</button>
+<button onclick="window.location.href='/quiz/delete/' + {{ quiz.id }}">Delete Quiz</button>
 
 <ol>
     {% for questions in quiz.questions.all %}

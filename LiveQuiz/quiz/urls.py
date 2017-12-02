@@ -8,6 +8,7 @@ urlpatterns = [
     url(r'^join/$', views.student_join, name='join'),
     url(r'^display/(?P<quiz_id>[0-9]+)$', views.display_join_url, name='display'),
     url(r'^create/$', views.create, name='create'),
+    url(r'^delete/(?P<quiz_id>[0-9]+)$', views.delete, name='delete'),
     url(r'^createQuiz/$', views.create_quiz, name='create_quiz'),
     url(r'^student/(?P<quiz_id>[0-9]+)/(?P<question_id>[0-9]+)$', views.student_question_view, name='student_question_view'),
     url(r'^teacher/(?P<quiz_id>[0-9]+)/(?P<question_id>[0-9]+)$', views.teacher_question_view, name='teacher_question_view'),
