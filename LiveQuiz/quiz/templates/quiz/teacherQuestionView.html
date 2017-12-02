@@ -10,12 +10,13 @@
 <body>
 <h1> {{ question.question_text }} </h1>
 
-
+<ol>
     {% for answer in question.answers.all %}
         <li>{{ answer.choice_text }}
         <br>
     {% endfor %}
     <br>
+</ol>
 
 <button onclick="location.href ='/quiz/teacherEdit/' + {{ quiz_id }} + '/' + {{ question.id }}">Edit</button>
 <button onclick="location.href ='/quiz/' + {{ quiz_id }} + '/' + {{ question.id }} + '/results'">Results</button>

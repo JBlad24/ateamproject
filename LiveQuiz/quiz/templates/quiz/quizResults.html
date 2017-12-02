@@ -1,0 +1,36 @@
+{% load static %}
+<link rel="stylesheet" type="text/css" href="{% static 'quiz/style.css' %}"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Quiz Results</title>
+    <style>
+        #votes {
+            color: #9b536a;
+        }
+    </style>
+</head>
+<body>
+
+
+<h1>Quiz Complete</h1>
+<h1>{{ quiz.quiz_name }}</h1>
+
+<ol>
+    {% for questions in quiz.questions.all %}
+        <li>{{ questions.question_text }}</li>
+        <ul>
+        {% for answer in questions.answers.all %}
+            <li> {{ answer.choice_text }} <div id="votes">Votes: {{ answer.votes }} </div></li>
+        {% endfor %}
+        </ul>
+    {% endfor %}
+</ol>
+
+<button onclick="window.location.href='/quiz/teacherView'">Home</button>
+
+</body>
+</html>

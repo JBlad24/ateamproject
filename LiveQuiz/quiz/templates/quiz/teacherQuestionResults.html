@@ -9,14 +9,15 @@
     <script>
         var last_id = {{ last_id }}
 
-        function nextQuestion(quiz_id, id)
+        function nextQuestion()
         {   //only advance to next question if the id given is still in the specified quiz
-            id += 1;
-            if (id <= last_id) {
-                window.location.href = "/quiz/teacher/question/" + quiz_id + "/" + id;
+            var questionId = ({{ question.id }} + 1);
+
+            if (questionId <= last_id) {
+                window.location.href = '/quiz/teacher/' + {{ quiz_id }} + '/' + questionId;
             }
             else {
-                window.location.href = "/quiz/teacherView"
+                window.location.href = "/quiz/teacher/results/" + {{ quiz_id }};
             }
         }
     </script>
@@ -32,7 +33,7 @@
     {% endfor %}
 
 
-    <button onclick="nextQuestion({{ quiz_id }},{{ question.id }})">Next</button>
+    <button onclick="nextQuestion()">Next</button>
 
 </body>
 </html>

@@ -109,5 +109,15 @@ def question_results(request, quiz_id, question_id):
 
     # get the id of the last question in the quiz
     last_id = quiz.questions.all().last().id
-
     return render(request, 'quiz/teacherQuestionResults.html', {'question': question, 'quiz_id': quiz_id, 'last_id': last_id})
+
+
+def teacher_question_help(request, quiz_id):
+    quiz = get_object_or_404(Quiz, pk=quiz_id)
+    first_id = quiz.questions.all().first().id
+    return redirect('/quiz/teacher/' + str(quiz_id) + '/' + str(first_id))
+
+
+def quiz_results(request, quiz_id):
+    quiz = get_object_or_404(Quiz, pk=quiz_id)
+    return render(request, 'quiz/quizResults.html', {'quiz': quiz})
