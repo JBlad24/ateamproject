@@ -10,15 +10,61 @@
 <body>
 
 
-    <h1>Question: <input type="text" value="{{ question.question_text }}"></h1>
+{#<form action ="/quiz/teacher/{{ quiz_id }}/{{ question.id }}" method="POST">#}
+{#{% csrf_token %}#}
+{#    <h1>Question: <input type="text" value="{{ question.question_text }}"></h1>#}
+{#    {% for answer in question.answers.all %}#}
+{#        <li><input type="text" value="{{ answer.choice_text }}">#}
+{#        <br>#}
+{#    {% endfor %}#}
+{#    <br>#}
+{#<input type="submit" value="Update"/>#}
+{#</form>#}
+
+{#<button onclick="location.href ='/quiz/teacher/' + {{ quiz_id }} + '/' + {{ question.id }}">Finished</button>#}
+
+{#<form id="editQuestion" action ="/quiz/teacher/{{ quiz_id }}/{{ question.id }}" method="POST">#}
+{#    <h1>Question: <input type="text" name="questionName" value="{{ question.question_text }}"></h1>#}
+{#    <input type="button" onclick="edit() ; location.href ='/quiz/teacher/' + {{ quiz_id }} + '/' + {{ question.id }}" value="Update"/>#}
+{#</form>#}
+{##}
+{#<script>#}
+{#    function edit(){#}
+{#        var x, y, questionName;#}
+{##}
+{#        x = document.getElementById("editQuestion");#}
+{#        y = x.elements["questionName"].value;#}
+{#    }#}
+{##}
+{#</script>#}
+
+<form>
+{% csrf_token %}
+    <h1>Question: <input type="text" name="question" value="{{ question.question_text }}"></h1>
     {% for answer in question.answers.all %}
-        <li><input type="text" value="{{ answer.choice_text }}">
+        <li><input type="text" name="answers" value="{{ answer.choice_text }}">
         <br>
     {% endfor %}
     <br>
+</form>
+<button onclick="edit() ; myAlert() ; location.href ='/quiz/teacher/' + {{ quiz_id }} + '/' + {{ question.id }}">Finished</button>
+
+<script>
+    function edit{
+        var question, answers;
+
+        {{ question.question_text }} = question;
+        {{ answer.choice_text }} = answers;
+    }
+
+    function myAlert{
+        alert("Question saved changes!");
+    }
+</script>
 
 
-<button onclick="location.href ='/quiz/teacher/' + {{ quiz_id }} + '/' + {{ question.id }}">Finished</button>
+
+
 
 </body>
 </html>
