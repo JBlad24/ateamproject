@@ -16,6 +16,7 @@ urlpatterns = [
     url(r'^teacher/(?P<quiz_id>[0-9]+)/(?P<question_id>[0-9]+)$', views.teacher_question_view, name='teacher_question_view'),
     url(r'^teacher/(?P<quiz_id>[0-9]+)/$', views.teacher_question_help, name='teacher_question_help'),
     url(r'^teacher/results/(?P<quiz_id>[0-9]+)/$', views.quiz_results, name='quiz_results'),
+    url(r'^student/results/(?P<quiz_id>[0-9]+)/$', views.quiz_student_results, name='quiz_student_results'),
     url(r'^teacherEdit/(?P<quiz_id>[0-9]+)/(?P<question_id>[0-9]+)$', views.teacherEdit_question_view, name='teacherEdit_question_view'),
     url(r'^teacherView/$', views.teacher_view, name='teacher_view'),
     url(r'^signup/$', views.signup, name='signup'),

@@ -34,8 +34,6 @@ def display_join_url(request, quiz_id):
             answer.votes = 0
             answer.save()
 
-
-
     return render(request, 'quiz/displayUrl.html', {'quiz_id': quiz_id})
 
 
@@ -63,6 +61,7 @@ def create_quiz(request):
             new_choice.save()
 
     return HttpResponseRedirect(reverse('quiz:teacher_view'))
+
 
 def student_vote(request):
     quiz_id = request.POST['quizId']
@@ -163,6 +162,11 @@ def quiz_results(request, quiz_id):
     return render(request, 'quiz/quizResults.html', {'quiz': quiz})
 
 
+def quiz_student_results(request, quiz_id):
+    quiz = get_object_or_404(Quiz, pk=quiz_id)
+    return render(request, 'quiz/quizStudentResults.html', {'quiz': quiz})
+
+
 def delete(request, quiz_id):
     Quiz.objects.filter(id=quiz_id).delete()
     return HttpResponseRedirect(reverse('quiz:quiz_list_view'))
@@ -175,10 +179,9 @@ def student_question_view_help(request, quiz_id):
 
 
 def vote(request, quiz_id, question_id):
-    #quiz = get_object_or_404(Quiz, pk=quiz_id)
+    # quiz = get_object_or_404(Quiz, pk=quiz_id)
     question = get_object_or_404(Question, pk=question_id)
     selected_answer = question.answers.get(pk=request.POST['answer'])
     selected_answer.votes += 1
     selected_answer.save()
-    return HttpResponseRedirect('/quiz/' + quiz_id + '/' + question_id + '/results/student/',)
-
+    return HttpResponseRedirect('/quiz/' + quiz_id + '/' + question_id + '/results/student/', )
