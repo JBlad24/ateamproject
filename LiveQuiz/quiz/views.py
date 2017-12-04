@@ -63,17 +63,23 @@ def create_quiz(request):
     return HttpResponseRedirect(reverse('quiz:teacher_view'))
 
 
-def student_vote(request):
+def edit_question(request):
     quiz_id = request.POST['quizId']
     question_id = request.POST['questionId']
     quiz = Quiz.objects.get(pk=quiz_id)
     question = Question.objects.get(pk=question_id)
     question.question_text = request.POST['questionText']
 
+    answerList = question.answers.all()
+
     answer_choices = request.POST.getlist("answers[]")
-    # for idx, answer in enumerate(answer_choices):
-    #     answer.choice_text = answer_choices[idx]
-    #     answer.save()
+
+
+    for idx, answer in enumerate(answer_choices):
+        answerList[idx].choice_text = answer
+        print(answerList[idx].choice_text)
+        question.save()
+
 
     question.save()
     quiz.save()

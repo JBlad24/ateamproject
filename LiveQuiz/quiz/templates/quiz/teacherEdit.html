@@ -10,35 +10,8 @@
 <body>
 
 
-{#<form action ="/quiz/teacher/{{ quiz_id }}/{{ question.id }}" method="POST">#}
-{#{% csrf_token %}#}
-{#    <h1>Question: <input type="text" value="{{ question.question_text }}"></h1>#}
-{#    {% for answer in question.answers.all %}#}
-{#        <li><input type="text" value="{{ answer.choice_text }}">#}
-{#        <br>#}
-{#    {% endfor %}#}
-{#    <br>#}
-{#<input type="submit" value="Update"/>#}
-{#</form>#}
 
-{#<button onclick="location.href ='/quiz/teacher/' + {{ quiz_id }} + '/' + {{ question.id }}">Finished</button>#}
-
-{#<form id="editQuestion" action ="/quiz/teacher/{{ quiz_id }}/{{ question.id }}" method="POST">#}
-{#    <h1>Question: <input type="text" name="questionName" value="{{ question.question_text }}"></h1>#}
-{#    <input type="button" onclick="edit() ; location.href ='/quiz/teacher/' + {{ quiz_id }} + '/' + {{ question.id }}" value="Update"/>#}
-{#</form>#}
-{##}
-{#<script>#}
-{#    function edit(){#}
-{#        var x, y, questionName;#}
-{##}
-{#        x = document.getElementById("editQuestion");#}
-{#        y = x.elements["questionName"].value;#}
-{#    }#}
-{##}
-{#</script>#}
-
-<form action ="{% url 'quiz:student_vote' %}" method="post">
+<form action ="{% url 'quiz:edit_question' %}" method="post">
 {% csrf_token %}
     <h1>Question: <input type="text" name="questionText" value="{{ question.question_text }}"></h1>
     {% for answer in question.answers.all %}

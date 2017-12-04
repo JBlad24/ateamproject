@@ -1,17 +1,10 @@
-.entry:not(:first-of-type)
-{
-    margin-top: 10px;
-}
 
-.glyphicon
-{
-    font-size: 12px;
-}
+
 
 html, body {
     height: 100%;
-    background: #3AAFA9;
-    color: #EDF3FC;
+    /*background: #3AAFA9;*/
+    /*color: #EDF3FC;*/
     font-family: Impact;
 }
 
@@ -24,8 +17,8 @@ html {
 body {
     display: table-cell;
     vertical-align: middle;
-    background: #3AAFA9;
-    color: #EDF3FC;
+    /*background: #3AAFA9;*/
+    /*color: #EDF3FC;*/
     font-family: Impact;
 }
 
@@ -36,5 +29,7 @@ h1 {
 a {
     color: #373d47;
 }
+
+
 
 
