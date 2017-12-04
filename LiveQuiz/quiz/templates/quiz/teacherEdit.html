@@ -38,29 +38,21 @@
 {##}
 {#</script>#}
 
-<form>
+<form action ="{% url 'quiz:student_vote' %}" method="post">
 {% csrf_token %}
-    <h1>Question: <input type="text" name="question" value="{{ question.question_text }}"></h1>
+    <h1>Question: <input type="text" name="questionText" value="{{ question.question_text }}"></h1>
     {% for answer in question.answers.all %}
-        <li><input type="text" name="answers" value="{{ answer.choice_text }}">
+        <li><input type="text" name="answers[]" value="{{ answer.choice_text }}">
         <br>
     {% endfor %}
+    <input type="hidden" name="quizId" value="{{ quiz_id }}">
+    <input type="hidden" name="questionId" value="{{ question.id }}">
+    <input type="submit" value="Save" />
     <br>
 </form>
-<button onclick="edit() ; myAlert() ; location.href ='/quiz/teacher/' + {{ quiz_id }} + '/' + {{ question.id }}">Finished</button>
 
-<script>
-    function edit{
-        var question, answers;
 
-        {{ question.question_text }} = question;
-        {{ answer.choice_text }} = answers;
-    }
 
-    function myAlert{
-        alert("Question saved changes!");
-    }
-</script>
 
 
 

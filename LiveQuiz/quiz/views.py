@@ -53,6 +53,23 @@ def create_quiz(request):
 
     return HttpResponseRedirect(reverse('quiz:teacher_view'))
 
+def student_vote(request):
+    quiz_id = request.POST['quizId']
+    question_id = request.POST['questionId']
+    quiz = Quiz.objects.get(pk=quiz_id)
+    question = Question.objects.get(pk=question_id)
+    question.question_text = request.POST['questionText']
+
+    answer_choices = request.POST.getlist("answers[]")
+    # for idx, answer in enumerate(answer_choices):
+    #     answer.choice_text = answer_choices[idx]
+    #     answer.save()
+
+    question.save()
+    quiz.save()
+
+    return redirect("/quiz/teacher/" + quiz_id + "/" + question_id)
+
 
 def student_question_view(request, quiz_id, question_id):
     quiz = Quiz.objects.get(pk=quiz_id)
@@ -73,7 +90,7 @@ def signup(request):
             raw_password = form.cleaned_data.get('password1')
             user = authenticate(username=username, password=raw_password)
             login(request, user)
-            return redirect('quiz:index')
+            return redirect('quiz:teacher_view')
     else:
         form = UserCreationForm()
     return render(request, 'registration/signup.html', {'form': form})
@@ -153,3 +170,4 @@ def vote(request, quiz_id, question_id):
     selected_answer.votes += 1
     selected_answer.save()
     return HttpResponseRedirect('/quiz/' + quiz_id + '/' + question_id + '/results/student/',)
+
