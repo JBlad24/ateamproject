@@ -25,6 +25,17 @@ def student_join(request):
 
 
 def display_join_url(request, quiz_id):
+    quiz = Quiz.objects.get(pk=quiz_id)
+    questions = quiz.questions.all()
+
+    for question in questions:
+        answers = question.answers.all()
+        for answer in answers:
+            answer.votes = 0
+            answer.save()
+
+
+
     return render(request, 'quiz/displayUrl.html', {'quiz_id': quiz_id})
 
 
