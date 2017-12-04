@@ -16,12 +16,12 @@ def index(request):
 
 
 def student_join(request):
-    quiz_id = request.POST.get("code")
-    print(quiz_id)
-    quiz = Quiz.objects.get(pk=quiz_id)
-    question_id = quiz.questions.first().id
+    # quiz_id = request.POST.get("code")
+    # print(quiz_id)
+    # quiz = Quiz.objects.get(pk=quiz_id)
+    # question_id = quiz.questions.first().id
 
-    return render(request, 'quiz/studentJoin.html', {'question_id': question_id})
+    return render(request, 'quiz/studentJoin.html')
 
 
 def display_join_url(request, quiz_id):
@@ -138,6 +138,12 @@ def quiz_results(request, quiz_id):
 def delete(request, quiz_id):
     Quiz.objects.filter(id=quiz_id).delete()
     return HttpResponseRedirect(reverse('quiz:quiz_list_view'))
+
+
+def student_question_view_help(request, quiz_id):
+    quiz = get_object_or_404(Quiz, pk=quiz_id)
+    first_id = quiz.questions.all().first().id
+    return redirect('/quiz/student/' + str(quiz_id) + '/' + str(first_id))
 
 
 def vote(request, quiz_id, question_id):
