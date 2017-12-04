@@ -19,5 +19,7 @@ urlpatterns = [
     url(r'^signup/$', views.signup, name='signup'),
     url(r'^(?P<quiz_id>[0-9]+)/detail/$', views.teacher_quiz_view, name='teacher_quiz_view'),
     url(r'^(?P<quiz_id>[0-9]+)/(?P<question_id>[0-9]+)/results/$', views.question_results, name='question_results'),
+    url(r'^(?P<quiz_id>[0-9]+)/(?P<question_id>[0-9]+)/results/student/$', views.student_results, name='student_results'),
     url(r'^quizList/$', views.quiz_list_view, name="quiz_list_view"),
+    url(r'^(?P<quiz_id>[0-9]+)/(?P<question_id>[0-9]+)/vote/$', views.vote, name='vote'),
 ]

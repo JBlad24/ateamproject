@@ -12,10 +12,11 @@
 
 <h1> {{ question.question_text }} </h1>
 
-<form>
+<form action="{% url 'quiz:vote' quiz.id question.id%}" method="post">
+{% csrf_token %}
     {% for answer in question.answers.all %}
 
-        <input type="radio", name="answer"> {{ answer.choice_text }}
+        <input type="radio", name="answer", id="answer{{ forloop.counter }}", value="{{ answer.id }}"> {{ answer.choice_text }}
         <br>
 
     {% endfor %}

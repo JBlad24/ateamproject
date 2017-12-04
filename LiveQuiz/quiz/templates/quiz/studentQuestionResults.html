@@ -1,0 +1,30 @@
+{% load static %}
+<link rel="stylesheet" type="text/css" href="{% static 'quiz/style.css' %}"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Student Results</title>
+       <script>
+        var last_id = {{ last_id }}
+
+        function nextQuestion()
+        {   //only advance to next question if the id given is still in the specified quiz
+            var questionId = ({{ question.id }} + 1);
+
+            if (questionId <= last_id) {
+                window.location.href = '/quiz/student/' + {{ quiz_id }} + '/' + questionId;
+            }
+            else {
+                window.location.href = "/quiz/teacher/results/" + {{ quiz_id }};
+            }
+        }
+    </script>
+</head>
+
+<body>
+<h1>You Answered!</h1>
+<button onclick="nextQuestion()">Next</button>
+</body>
+</html>

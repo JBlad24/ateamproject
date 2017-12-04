@@ -45,7 +45,7 @@ def create_quiz(request):
         new_question = Question(question_text=question)
         new_question.quiz = new_quiz
         new_question.save()
-        answer_choices = request.POST.getlist("answerChoices[]" + str(idx+1))
+        answer_choices = request.POST.getlist("answerChoices[]" + str(idx + 1))
         for choice in answer_choices:
             new_choice = AnswerChoice(choice_text=choice, votes=0)
             new_choice.question = new_question
@@ -57,7 +57,7 @@ def create_quiz(request):
 def student_question_view(request, quiz_id, question_id):
     quiz = Quiz.objects.get(pk=quiz_id)
     question = quiz.questions.get(pk=question_id)
-    return render(request, r'quiz/studentQuestionView.html', {'question': question})
+    return render(request, r'quiz/studentQuestionView.html', {'quiz': quiz, 'question': question})
 
 
 def teacher_view(request):
@@ -91,6 +91,7 @@ def teacher_question_view(request, quiz_id, question_id):
     question = quiz.questions.get(pk=question_id)
     return render(request, 'quiz/teacherQuestionView.html', {'question': question, 'quiz_id': quiz_id})
 
+
 def teacherEdit_question_view(request, quiz_id, question_id):
     quiz = get_object_or_404(Quiz, pk=quiz_id)
     question = quiz.questions.get(pk=question_id)
@@ -109,7 +110,18 @@ def question_results(request, quiz_id, question_id):
 
     # get the id of the last question in the quiz
     last_id = quiz.questions.all().last().id
-    return render(request, 'quiz/teacherQuestionResults.html', {'question': question, 'quiz_id': quiz_id, 'last_id': last_id})
+    return render(request, 'quiz/teacherQuestionResults.html',
+                  {'question': question, 'quiz_id': quiz_id, 'last_id': last_id})
+
+
+def student_results(request, quiz_id, question_id):
+    quiz = get_object_or_404(Quiz, pk=quiz_id)
+    question = get_object_or_404(Question, pk=question_id)
+
+    # get the id of the last question in the quiz
+    last_id = quiz.questions.all().last().id
+    return render(request, 'quiz/studentQuestionResults.html',
+                  {'question': question, 'quiz_id': quiz_id, 'last_id': last_id})
 
 
 def teacher_question_help(request, quiz_id):
@@ -126,3 +138,12 @@ def quiz_results(request, quiz_id):
 def delete(request, quiz_id):
     Quiz.objects.filter(id=quiz_id).delete()
     return HttpResponseRedirect(reverse('quiz:quiz_list_view'))
+
+
+def vote(request, quiz_id, question_id):
+    #quiz = get_object_or_404(Quiz, pk=quiz_id)
+    question = get_object_or_404(Question, pk=question_id)
+    selected_answer = question.answers.get(pk=request.POST['answer'])
+    selected_answer.votes += 1
+    selected_answer.save()
+    return HttpResponseRedirect('/quiz/' + quiz_id + '/' + question_id + '/results/student/',)
