@@ -10,6 +10,7 @@ urlpatterns = [
     url(r'^create/$', views.create, name='create'),
     url(r'^delete/(?P<quiz_id>[0-9]+)$', views.delete, name='delete'),
     url(r'^createQuiz/$', views.create_quiz, name='create_quiz'),
+    url(r'^student/(?P<quiz_id>[0-9]+)/$', views.student_question_view_help, name='student_question_view_help'),
     url(r'^student/(?P<quiz_id>[0-9]+)/(?P<question_id>[0-9]+)$', views.student_question_view, name='student_question_view'),
     url(r'^teacher/(?P<quiz_id>[0-9]+)/(?P<question_id>[0-9]+)$', views.teacher_question_view, name='teacher_question_view'),
     url(r'^teacher/(?P<quiz_id>[0-9]+)/$', views.teacher_question_help, name='teacher_question_help'),
