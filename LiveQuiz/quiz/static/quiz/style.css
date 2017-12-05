@@ -1,11 +1,8 @@
-
-
-
 html, body {
     height: 100%;
-    background: #3AAFA9;
-    color: #EDF3FC;
-    font-family: Impact;
+    margin: 0;
+    padding: 0;
+    animation: bgcolor infinite 20s;
 }
 
 html {
@@ -17,19 +14,39 @@ html {
 body {
     display: table-cell;
     vertical-align: middle;
-    background: #3AAFA9;
     color: #EDF3FC;
-    font-family: Impact;
+    font-family: Rockwell;
 }
 
 h1 {
-    color: #17252A;
+    color: #000000;
 }
 
 a {
-    color: #373d47;
+    color: #fffdfb;
 }
 
+
+@keyframes  bgcolor{
+    0%{
+        background: #16a085;
+    }
+    20%{
+        background: #27ae60;
+    }
+    40%{
+        background: #2980b9;
+    }
+    60%{
+        background: #8e44ad;
+    }
+    80%{
+        background: #c0392b;
+    }
+    100%{
+        background: #2c3e50;
+    }
+}
 
 
 
