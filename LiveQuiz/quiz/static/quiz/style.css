@@ -3,8 +3,8 @@
 
 html, body {
     height: 100%;
-    /*background: #3AAFA9;*/
-    /*color: #EDF3FC;*/
+    background: #3AAFA9;
+    color: #EDF3FC;
     font-family: Impact;
 }
 
@@ -17,8 +17,8 @@ html {
 body {
     display: table-cell;
     vertical-align: middle;
-    /*background: #3AAFA9;*/
-    /*color: #EDF3FC;*/
+    background: #3AAFA9;
+    color: #EDF3FC;
     font-family: Impact;
 }
 
