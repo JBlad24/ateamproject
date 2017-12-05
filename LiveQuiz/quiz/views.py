@@ -71,18 +71,15 @@ def edit_question(request):
     question.question_text = request.POST['questionText']
 
     answerList = question.answers.all()
-
     answer_choices = request.POST.getlist("answers[]")
 
-
-    for idx, answer in enumerate(answer_choices):
-        answerList[idx].choice_text = answer
-        print(answerList[idx].choice_text)
-        question.save()
-
+    count = 0
+    for answer in answerList:
+        answer.choice_text = answer_choices[count]
+        answer.save()
+        count += 1
 
     question.save()
-    quiz.save()
 
     return redirect("/quiz/teacher/" + quiz_id + "/" + question_id)
 
